@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, Alert } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Make sure you have @expo/vector-icons installed
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -11,7 +10,8 @@ const LoginScreen = ({ navigation }) => {
         console.log(`Email: ${email}, Password: ${password}`);
 
         try {
-            const response = await fetch(`http://192.168.100.74:5000/login`, {
+            const baseUrl = 'http://192.168.100.74:5000';
+            const response = await fetch(`${baseUrl}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,16 +19,45 @@ const LoginScreen = ({ navigation }) => {
                 body: JSON.stringify({ email, password })
             });
 
-            const responseData = await response.json(); // Parse the JSON response
-
             console.log('Response status:', response.status);
-            console.log('Response data:', responseData);
+
+            const data = await response.json();
 
             if (response.ok) {
-                Alert.alert('Success', responseData.message);
-                navigation.navigate('Homepage');
+                console.log('Response data:', data);
+                navigation.navigate('Homepage', { firstName: data.firstName, lastName: data.lastName });
             } else {
-                Alert.alert('Error', responseData.error);
+                console.log('Error data:', data);
+                Alert.alert('Error', data.error || 'Login failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Alert.alert('Error', 'An error occurred. Please try again.');
+        }
+    };
+
+    const handleForgotPassword = async () => {
+        if (!email) {
+            Alert.alert('Error', 'Please enter your email to reset password.');
+            return;
+        }
+
+        try {
+            const baseUrl = 'http://192.168.100.74:5000';
+            const response = await fetch(`${baseUrl}/forgot-password`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                Alert.alert('Success', 'A reset password link has been sent to your email.');
+            } else {
+                Alert.alert('Error', data.error || 'Failed to send reset password email. Please try again.');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -38,7 +67,6 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-           
             <View style={styles.formContainer}>
                 <Text style={styles.title}>Login</Text>
                 <TextInput
@@ -63,6 +91,9 @@ const LoginScreen = ({ navigation }) => {
                 <Pressable style={styles.link} onPress={() => navigation.navigate('Register')}>
                     <Text style={styles.linkText}>Don't have an account? Register</Text>
                 </Pressable>
+                <Pressable style={styles.link} onPress={handleForgotPassword}>
+                    <Text style={styles.linkText}>Forgot Password?</Text>
+                </Pressable>
             </View>
         </View>
     );
@@ -75,12 +106,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F9F9F9',
         paddingVertical: 20,
-    },
-    backButton: {
-        position: 'absolute',
-        top: 40,
-        left: 20,
-        zIndex: 10,
     },
     formContainer: {
         width: '90%',

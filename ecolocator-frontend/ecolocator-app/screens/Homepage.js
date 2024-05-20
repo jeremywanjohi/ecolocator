@@ -1,15 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, BackHandler } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native'; // Import the useFocusEffect hook
 import { Ionicons } from '@expo/vector-icons'; // Make sure you have @expo/vector-icons installed
 
-const Homepage = ({ navigation }) => {
+const Homepage = ({ route, navigation }) => {
+    const { firstName, lastName } = route.params;
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const onBackPress = () => {
+                // Prevent back navigation
+                return true;
+            };
+
+            BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () =>
+                BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        }, [])
+    );
+
     const handleLogout = () => {
         Alert.alert(
             "Logout",
-            "Are you sure you want to log out?",
+            "Are you sure you want to logout?",
             [
-                { text: "Cancel", style: "cancel" },
-                { text: "OK", onPress: () => navigation.navigate('Welcome') }
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "Yes",
+                    onPress: () => navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'Welcome' }],
+                    })
+                }
             ]
         );
     };
@@ -17,19 +44,15 @@ const Homepage = ({ navigation }) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.header}>
+                <Text style={styles.welcomeText}>Welcome, {firstName} {lastName}!</Text>
                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                    <Ionicons name="log-out-outline" size={20} color="#FFF" />
+                    <Ionicons name="log-out-outline" size={24} color="white" />
                 </TouchableOpacity>
             </View>
-            
-            <View style={styles.headerContent}>
-                <Text style={styles.welcomeText}>Welcome back, Jeremy Wanjohi</Text>
-                <View style={styles.pointsContainer}>
-                    <Text style={styles.pointsText}>You have</Text>
-                    <Text style={styles.points}>3000 RCOINS</Text>
-                </View>
+            <View style={styles.pointsContainer}>
+                <Text style={styles.pointsText}>You have</Text>
+                <Text style={styles.points}>3000 RCOINS</Text>
             </View>
-
             <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Stores, Coupons & Rewards</Text>
                 <View style={styles.cardsContainer}>
@@ -45,7 +68,6 @@ const Homepage = ({ navigation }) => {
                     </View>
                 </View>
             </View>
-
             <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Activities</Text>
                 <View style={styles.activitiesContainer}>
@@ -87,11 +109,8 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 20,
-    },
-    headerContent: {
         marginBottom: 20,
     },
     welcomeText: {
@@ -182,11 +201,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 4,
     },
     logoutButtonText: {
         color: '#FFF',

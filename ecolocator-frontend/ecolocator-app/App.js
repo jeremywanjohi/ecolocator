@@ -7,6 +7,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import Homepage from './screens/Homepage';
 import ActivateScreen from './screens/ActivateScreen';
+import ResetPasswordScreen from './screens/ResetPasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,18 @@ const linking = {
       Register: 'register',
       Login: 'login',
       Homepage: 'home',
-      Activate: 'activate',
+      Activate: {
+        path: 'activate',
+        parse: {
+          email: (email) => `${email}`,
+        },
+      },
+      ResetPassword: {
+        path: 'resetpassword',
+        parse: {
+          email: (email) => `${email}`,
+        },
+      },
     },
   },
 };
@@ -32,6 +44,7 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Homepage" component={Homepage} />
         <Stack.Screen name="Activate" component={ActivateScreen} />
+        <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
