@@ -34,13 +34,13 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/register', async (req, res) => {
-    const { email, password, phoneNumber } = req.body;
+    const { email, password, phoneNumber, firstName, lastName } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    db.query('INSERT INTO users (email, hashed_password, phone_number, is_active) VALUES (?, ?, ?, ?)', 
-    [email, hashedPassword, phoneNumber, false], (err, result) => {
+    db.query('INSERT INTO users (email, hashed_password, phone_number, first_name, last_name, is_active) VALUES (?, ?, ?, ?, ?, ?)', 
+    [email, hashedPassword, phoneNumber, firstName, lastName, false], (err, result) => {
         if (err) {
-            return res.status(500).json({ error: 'Database error' });
+            return res.status(500).send(err);
         }
 
         const activationLink = `http://192.168.100.74:8081/activate?email=${encodeURIComponent(email)}`;
@@ -99,7 +99,42 @@ app.post('/login', (req, res) => {
             return res.status(403).json({ error: 'Account not activated. Please check your email.' });
         }
 
-        res.status(200).json({ message: 'Login successful!' });
+        res.status(200).json({
+            message: 'Login successful!',
+            firstName: user.first_name, 
+            lastName: user.last_name 
+        });
+    });
+});
+
+app.post('/forgot-password', (req, res) => {
+    const { email } = req.body;
+    const resetLink = `http://192.168.100.74:8081/resetpassword?email=${encodeURIComponent(email)}`;
+
+    const mailOptions = {
+        from: 'jeremy.wanjohi@strathmore.edu',
+        to: email,
+        subject: 'Password Reset',
+        text: `Please reset your password by clicking the following link: ${resetLink}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.status(500).json({ error: 'Error sending email' });
+        }
+        res.status(200).json({ message: 'Reset password email sent. Please check your email.' });
+    });
+});
+
+app.post('/reset-password', async (req, res) => {
+    const { email, newPassword } = req.body;
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    db.query('UPDATE users SET hashed_password = ? WHERE email = ?', [hashedPassword, email], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error resetting password' });
+        }
+        res.status(200).json({ message: 'Password reset successfully' });
     });
 });
 

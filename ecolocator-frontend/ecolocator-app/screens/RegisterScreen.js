@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, Pressable, ScrollView, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert, Pressable, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Make sure you have @expo/vector-icons installed
 
 const RegisterScreen = ({ navigation }) => {
@@ -7,34 +7,36 @@ const RegisterScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [message, setMessage] = useState('');
 
     const handleRegister = async () => {
         console.log('Register button pressed');
-        console.log(`Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}, Phone Number: ${phoneNumber}`);
-    
+        console.log(`Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}, Phone Number: ${phoneNumber}, First Name: ${firstName}, Last Name: ${lastName}`);
+        
         if (password !== confirmPassword) {
             Alert.alert('Error', 'Passwords do not match.');
             return;
         }
-    
+
         if (password.length < 8 || !/\d/.test(password) || !/[!@#$%^&*]/.test(password)) {
             Alert.alert('Error', 'Password must be at least 8 characters long and include numbers and special characters.');
             return;
         }
-    
+
         try {
-            const baseUrl = 'http://192.168.100.74:5000'; // Update the URL with your actual IP address
+            const baseUrl = 'http://192.168.100.74:5000'; // Update the URL to match your backend address
             const response = await fetch(`${baseUrl}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password, phoneNumber })
+                body: JSON.stringify({ email, password, phoneNumber, firstName, lastName })
             });
-    
+
             console.log('Response status:', response.status);
-    
+
             if (response.ok) {
                 const data = await response.json();
                 console.log('Response data:', data);
@@ -52,15 +54,28 @@ const RegisterScreen = ({ navigation }) => {
             setMessage('An error occurred. Please try again.');
         }
     };
-    
 
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.header}>
-   
+            
             </View>
             <View style={styles.formContainer}>
                 <Text style={styles.title}>Create Account</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="First Name"
+                    value={firstName}
+                    onChangeText={setFirstName}
+                    placeholderTextColor="#A0A0A0"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChangeText={setLastName}
+                    placeholderTextColor="#A0A0A0"
+                />
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
