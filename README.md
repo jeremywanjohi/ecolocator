@@ -1,5 +1,7 @@
 Ecolocator is a mobile application designed to help users locate recycling centers and earn rewards for their recycling activities. The app aims to promote sustainable practices by incentivizing recycling and making it easy for users to find the nearest recycling centers.
+
 Overview
+
 Features
 User Registration and Login:
 Users can create an account by providing their email, password, phone number, first name, and last name.
