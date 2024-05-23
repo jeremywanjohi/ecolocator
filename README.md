@@ -2,7 +2,10 @@
 
 Ecolocator is a mobile application designed to help users locate recycling centers and earn rewards for their recycling activities. The app promotes sustainable practices by incentivizing recycling and making it easy for users to find the nearest recycling centers.
 
-https://github.com/jeremywanjohi/EcoLocator-/blob/494a6dd462928311a12dc71cda390563ca43caf6/LICENSE
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
+
 ### Features
 
 - **User Registration and Login**
