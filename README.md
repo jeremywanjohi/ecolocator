@@ -77,7 +77,33 @@ Ecolocator is a mobile application designed to help users locate recycling cente
 - User rewards and available recycling stores.
 - Directions to the nearest recycling center.
 
-   
+### Project Structure:
+
+#### Overview:
+The project is divided into two main parts: the backend and the frontend. Each part contains relevant folders and files to support its functionality.
+
+- **ecolocator-backend**: Contains all backend-related code and configuration.
+  - **src**: Contains the main server code, routes, controllers, and database configurations.
+  - **config**: Contains configuration files for database connections and other settings.
+  - **migrations**: SQL scripts for setting up and updating the database schema.
+  - **seeders**: Scripts for populating the database with initial data.
+
+- **ecolocator-frontend/ecolocator-app**: Contains all frontend-related code and configuration.
+  - **assets**: Contains images, fonts, and other static assets.
+  - **components**: Reusable React components used throughout the app.
+  - **screens**: Main screens of the mobile application.
+  - **navigation**: Configuration for navigation between different screens in the app.
+  - **.env**: Environment-specific variables configuration file.
+
+#### Key Files:
+
+- **ecolocator-backend/src/index.js**: The main entry point for the backend server. It sets up Express, connects to the database, and starts the server.
+- **ecolocator-backend/src/routes.js**: Defines all the API endpoints and connects them to their respective controllers.
+- **ecolocator-backend/src/controllers**: Contains functions that handle the logic for each endpoint.
+- **ecolocator-frontend/ecolocator-app/App.js**: The main entry point for the frontend application. It sets up navigation and links all the screens together.
+- **ecolocator-frontend/ecolocator-app/screens**: Contains the main screens such as `WelcomeScreen`, `LoginScreen`, `MapScreen`, `NearestCenterScreen`, and `DirectionsScreen`.
+- **ecolocator-frontend/ecolocator-app/navigation**: Configures the navigation between different screens using React Navigation.
+- **ecolocator-frontend/ecolocator-app/.env**: Contains environment variables like API URLs to configure the frontend application.
 
 
 
