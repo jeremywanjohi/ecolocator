@@ -5,41 +5,63 @@ Ecolocator is a mobile application designed to help users locate recycling cente
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
+## Project Setup/Installation Instructions
 
-### Features
-
-- **User Registration and Login**
-  - Create an account with email, password, phone number, first name, and last name.
-  - Email verification for account activation.
-  - Login with email and password.
-
-- **Homepage**
-  - Displays a welcome message with the user's name and reward points (RCOINS).
-  - Access to Stores, Coupons & Rewards, and Activities.
-
-- **Email Notifications**
-  - Activation email upon registration.
-  - Password reset emails for users who request it.
-
-- **Password Reset**
-  - Users can request a password reset link via email and set a new password.
-
-- **Recycling Activities**
-  - Find the nearest recycling centers, recycle items, read news, access stores and rewards, learn about types of waste, and get support.
-
-### Requirements
-
+### Dependencies:
 - Node.js
 - MySQL
 - Expo CLI
 - React Native
+- Nodemailer
+- bcryptjs
+- cors
 
-### Environment Setup
+### Installation Steps:
 
-#### Backend Setup
+#### Backend Setup:
 
-1. Ensure you have MySQL installed and running.
-2. Create a database named `ecolocator` and use the provided SQL script to create tables.
-3. Install dependencies:
+1. **Navigate to the backend directory:**
    ```bash
-   npm install express mysql2 bcryptjs nodemailer cors
+   cd ecolocator-backend
+   
+2. **Install Dependencies:**
+   ```bash
+   npm install
+
+3. **Set up the MySQL database:**
+   Create a database named ecolocator.
+   Use the provided SQL script to create tables.
+
+4. **Start the backend server:**
+   ```bash
+   node src/index.js
+
+#### Frontend Setup:
+
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd ecolocator-frontend/ecolocator-app
+
+2. **Install Expo CLI globally if not already installed:**
+   ```bash
+   npm install -g expo-cli
+
+3. **Install Dependencies:**
+   ```bash
+   npm install
+
+4. **Start the Expo project:**
+   ```bash
+   npx expo start
+
+
+
+   
+
+
+
+
+
+
+
+
