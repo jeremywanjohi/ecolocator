@@ -54,7 +54,28 @@ Ecolocator is a mobile application designed to help users locate recycling cente
    ```bash
    npx expo start
 
+### Examples:
 
+#### Registration:
+- Register a new user via the registration form on the mobile app.
+- An activation email will be sent to the registered email address.
+
+#### Login:
+- Log in using the registered email and password.
+
+#### Recycling Activities:
+- Navigate to the "Find Nearest Place" to locate nearby recycling centers.
+- Check the "Stores & Rewards" section to view available stores and rewards.
+
+### Input/Output:
+
+#### Input:
+- User details for registration (email, password, phone number, first name, last name).
+- Location data for finding nearby recycling centers.
+
+#### Output:
+- User rewards and available recycling stores.
+- Directions to the nearest recycling center.
 
    
 
