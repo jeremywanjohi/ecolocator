@@ -83,6 +83,8 @@ Ecolocator is a mobile application designed to help users locate recycling cente
 The project is divided into two main parts: the backend and the frontend. Each part contains relevant folders and files to support its functionality.
 
 # Ecolocator Project Structure
+
+```
 .expo/
 ecolocator-backend/
 ├── config/
@@ -118,7 +120,7 @@ ecolocator-frontend/ecolocator-app/
 ├── package.json
 ├── react-native-map-web-fix.js
 └── README.md
-
+```
 
 
 
