@@ -82,18 +82,46 @@ Ecolocator is a mobile application designed to help users locate recycling cente
 #### Overview:
 The project is divided into two main parts: the backend and the frontend. Each part contains relevant folders and files to support its functionality.
 
-- **ecolocator-backend**: Contains all backend-related code and configuration.
-  - **src**: Contains the main server code, routes, controllers, and database configurations.
-  - **config**: Contains configuration files for database connections and other settings.
-  - **migrations**: SQL scripts for setting up and updating the database schema.
-  - **seeders**: Scripts for populating the database with initial data.
+# Ecolocator Project Structure
+.expo/
+ecolocator-backend/
+├── config/
+│   ├── ...
+├── models/
+│   ├── ...
+├── node_modules/
+│   ├── ...
+├── src/
+│   ├── ...
+├── .env
+├── package-lock.json
+├── package.json
+ecolocator-frontend/ecolocator-app/
+├── .expo/
+│   ├── ...
+├── %ProgramData%/
+│   ├── ...
+├── assets/
+│   ├── ...
+├── bin/
+│   ├── ...
+├── node_modules/
+│   ├── ...
+├── screens/
+│   ├── ...
+├── .env
+├── .gitignore
+├── App.js
+├── app.json
+├── babel.config.js
+├── package-lock.json
+├── package.json
+├── react-native-map-web-fix.js
+├── README.md
+├── package-lock.json
+└── package.json
 
-- **ecolocator-frontend/ecolocator-app**: Contains all frontend-related code and configuration.
-  - **assets**: Contains images, fonts, and other static assets.
-  - **components**: Reusable React components used throughout the app.
-  - **screens**: Main screens of the mobile application.
-  - **navigation**: Configuration for navigation between different screens in the app.
-  - **.env**: Environment-specific variables configuration file.
+
 
 #### Key Files:
 
