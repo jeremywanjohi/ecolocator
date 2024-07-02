@@ -30,7 +30,7 @@ git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator
    cd ecolocator-backend 
 2. **Set up the MySQL database:**
    Create a database named ecolocator.
-   Use the provided SQL script to create tables.
+   Use the provided [SQL](EcolocatorSQL) script to create tables.
 
 3. **Start the backend server:**
    ```bash
