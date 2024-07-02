@@ -10,6 +10,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Project Setup/Installation Instructions
 
+### Clone The Repository
+```
+git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator-project
+```
+
 ### Prerequisites
 1. Install Node.js: [Node.js](https://nodejs.org/)
 2. Install Expo : Open your terminal and run:
