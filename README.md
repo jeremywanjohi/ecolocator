@@ -122,6 +122,25 @@ ecolocator-frontend/ecolocator-app/
 - The main entry point for the backend server.
 - Sets up Express, connects to the database, and starts the server.
 
+#### Frontend
+`ecolocator-frontend/ecolocator-app/App.js`:
+- The main entry point for the frontend application.
+- Sets up navigation and links all the screens together.
+
+
+`ecolocator-frontend/ecolocator-app/screens`:
+-Contains the main screens such as
+- WelcomeScreen
+-LoginScreen
+-MapScreen
+-NearestCenterScreen
+-DirectionsScreen
+
+
+` `
+-
+- 
+
 
 
 
