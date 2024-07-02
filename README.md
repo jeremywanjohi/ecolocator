@@ -22,7 +22,7 @@ git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator
     ```bash
    npx create-expo-app@latest
     ```
-3. Install MySQL :[MYSQL](https://www.mysql.com/downloads/)
+3. Install MySQL :[MySQL](https://www.mysql.com/downloads/)
 
 #### Backend Setup:
 
