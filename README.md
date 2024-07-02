@@ -25,17 +25,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 1. **Navigate to the backend directory:**
    ```bash
-   cd ecolocator-backend
-   
-2. **Install Dependencies:**
-   ```bash
-   npm install
-
-3. **Set up the MySQL database:**
+   cd ecolocator-backend 
+2. **Set up the MySQL database:**
    Create a database named ecolocator.
    Use the provided SQL script to create tables.
 
-4. **Start the backend server:**
+3. **Start the backend server:**
    ```bash
    node src/index.js
 
