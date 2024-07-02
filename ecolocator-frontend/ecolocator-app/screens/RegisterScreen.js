@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, Pressable, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Make sure you have @expo/vector-icons installed
@@ -26,7 +27,7 @@ const RegisterScreen = ({ navigation }) => {
         }
 
         try {
-            const baseUrl = 'http://192.168.100.74:5000'; // Update the URL to match your backend address
+            const baseUrl = process.env.EXPO_PUBLIC_IP_ADDRESS; // Update the URL to match your backend address
             const response = await fetch(`${baseUrl}/register`, {
                 method: 'POST',
                 headers: {

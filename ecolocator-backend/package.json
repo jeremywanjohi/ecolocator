@@ -14,9 +14,13 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "expo-constants": "~16.0.2",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.9.7",
-    "nodemailer": "^6.9.13"
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.10.1",
+    "nodemailer": "^6.9.13",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
   }
 }
