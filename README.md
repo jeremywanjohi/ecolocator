@@ -10,16 +10,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Project Setup/Installation Instructions
 
-### Dependencies:
-- Node.js
-- MySQL
-- Expo CLI
-- React Native
-- Nodemailer
-- bcryptjs
-- cors
-
-### Installation Steps:
+### Prerequisites
+1. Install Node.js: [Node.js](https://nodejs.org/)
+2. Install Expo : Open your terminal and run:
+    ```bash
+   npx create-expo-app@latest
+    ```
 
 #### Backend Setup:
 
@@ -39,16 +35,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. **Navigate to the frontend directory:**
    ```bash
    cd ecolocator-frontend/ecolocator-app
-
-2. **Install Expo CLI globally if not already installed:**
-   ```bash
-   npm install -g expo-cli
-
-3. **Install Dependencies:**
+   
+2. **Install Dependencies:**
    ```bash
    npm install
 
-4. **Start the Expo project:**
+3. **Start the Expo project:**
    ```bash
    npx expo start
 
