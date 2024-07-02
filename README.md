@@ -1,3 +1,4 @@
+
 # Ecolocator
 
 Ecolocator is a mobile application designed to help users locate recycling centers and earn rewards for their recycling activities. The app promotes sustainable practices by incentivizing recycling and making it easy for users to find the nearest recycling centers.
@@ -118,8 +119,8 @@ ecolocator-frontend/ecolocator-app/
 #### Key Files:
 #### Backend
 `ecolocator-backend/src/index.js`:
--The main entry point for the backend server.
--Sets up Express, connects to the database, and starts the server.
+- The main entry point for the backend server.
+- Sets up Express, connects to the database, and starts the server.
 
 
 
