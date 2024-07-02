@@ -1,0 +1,95 @@
+-- Use the Ecolocator database
+USE ecolocator;
+
+-- Create tables
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    hashed_password VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(15),
+    username VARCHAR(50),
+    dob DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_active TINYINT(1) DEFAULT 0 NOT NULL,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    role ENUM('user', 'admin') DEFAULT 'user',
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    profile_picture VARCHAR(255),
+    location VARCHAR(255),
+    preferred_location VARCHAR(255),
+    alternativeEmail VARCHAR(255),
+    points_balance INT DEFAULT 0 NOT NULL,
+    verification_code VARCHAR(10),
+    code_expiry DATETIME
+) 
+
+CREATE TABLE RecyclingCenters (
+    CenterID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Location VARCHAR(255) NOT NULL,
+    ContactInfo VARCHAR(255)
+);
+
+CREATE TABLE WeighingOfficer (
+    OfficerID INT AUTO_INCREMENT PRIMARY KEY,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Hashed_Password VARCHAR(255) NOT NULL,
+    RegistrationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE MaterialCategories (
+    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    CategoryName VARCHAR(100) NOT NULL,
+    Description TEXT
+);
+
+CREATE TABLE RecycleData (
+    RecycleID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    CenterID INT,
+    RecycleDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Weight DECIMAL(10, 2),
+    PointsEarned INT NOT NULL DEFAULT 0,
+    CategoryID INT NOT NULL,
+    VerificationCode VARCHAR(10),
+    FOREIGN KEY (UserID) REFERENCES users(user_id),
+    FOREIGN KEY (CenterID) REFERENCES RecyclingCenters(CenterID),
+    FOREIGN KEY (CategoryID) REFERENCES MaterialCategories(CategoryID)
+);
+
+CREATE TABLE Rewards (
+    RewardID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    RewardDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    RewardPoints INT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES users(user_id)
+);
+
+CREATE TABLE admin_users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    hashed_password VARCHAR(255) NOT NULL,
+    name VARCHAR(255),
+    is_superadmin BOOLEAN DEFAULT FALSE
+);
+
+-- Insert initial data into MaterialCategories
+INSERT INTO MaterialCategories (CategoryName, Description) VALUES 
+('Plastic', 'Various types of plastic materials including bottles, containers, etc.'),
+('Paper', 'Paper products including newspapers, magazines, office paper, etc.'),
+('Glass', 'Glass items such as bottles, jars, and other containers.'),
+('Metal', 'Metal items including aluminum cans, steel products, etc.'),
+('Electronics', 'Electronic waste such as computers, phones, and other electronic devices.'),
+('Textiles', 'Textile materials including clothes, fabrics, and other textile products.'),
+('Organic', 'Organic waste including food scraps, yard waste, etc.');
+
+-- Use the Ecolocator database
+USE ecolocator;
+
+-- Modify users table to add points_balance and code_expiry
+ALTER TABLE users
+ADD COLUMN points_balance INT DEFAULT 0 NOT NULL,
+ADD COLUMN code_expiry DATETIME;
