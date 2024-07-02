@@ -11,8 +11,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 ## Project Setup/Installation Instructions
 
 ### Clone The Repository
+This will create a folder named ecolocator-project in your current directory and clone the repository into it.
 ```
-git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator-project
+git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator
 ```
 
 ### Prerequisites
