@@ -128,20 +128,9 @@ ecolocator-frontend/ecolocator-app/
 - Sets up navigation and links all the screens together.
 
 `ecolocator-frontend/ecolocator-app/screens`:
-- Contains the main screens such as
+Contains the main screens such as :
 - WelcomeScreen
 - LoginScreen
 - MapScreen
 - NearestCenterScreen
 - DirectionsScreen
-
-
-` `
--
-- 
-
-
-
-
-
-
