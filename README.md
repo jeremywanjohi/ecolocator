@@ -116,16 +116,10 @@ ecolocator-frontend/ecolocator-app/
 
 
 #### Key Files:
-
-- **ecolocator-backend/src/index.js**: The main entry point for the backend server. It sets up Express, connects to the database, and starts the server.
-- **ecolocator-backend/src/routes.js**: Defines all the API endpoints and connects them to their respective controllers.
-- **ecolocator-backend/src/controllers**: Contains functions that handle the logic for each endpoint.
-- **ecolocator-frontend/ecolocator-app/App.js**: The main entry point for the frontend application. It sets up navigation and links all the screens together.
-- **ecolocator-frontend/ecolocator-app/screens**: Contains the main screens such as `WelcomeScreen`, `LoginScreen`, `MapScreen`, `NearestCenterScreen`, and `DirectionsScreen`.
-- **ecolocator-frontend/ecolocator-app/navigation**: Configures the navigation between different screens using React Navigation.
-- **ecolocator-frontend/ecolocator-app/.env**: Contains environment variables like API URLs to configure the frontend application.
-
-
+#### Backend
+`ecolocator-backend/src/index.js`:
+-The main entry point for the backend server.
+-Sets up Express, connects to the database, and starts the server.
 
 
 
