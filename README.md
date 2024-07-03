@@ -12,11 +12,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 ## Project Setup/Installation Instructions
 
 ### Clone The Repository
-This will create a folder named ecolocator-project in your current directory and clone the repository into it.
+### Clone The Repository
+This will create a folder named ecolocator-project in your current directory and clone the repository into it.Its prefferable to install it in the documents folder
 ```
 git clone https://github.com/jeremywanjohi/ecolocator.git ecolocator
 ```
-
 ### Prerequisites
 1. Install Node.js: [Node.js](https://nodejs.org/)
 2. Install Expo : Open your terminal and run:
